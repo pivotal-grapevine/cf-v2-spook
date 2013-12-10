@@ -18,7 +18,7 @@ class Spook < Sinatra::Base
           'tags' => ['awesome', 'spook', 'spook for devs'],
           'metadata' => {
             'listing' => {
-              'imageUrl' => 'http://http://lorempixel.com/100/100/',
+              'imageUrl' => 'http://lorempixel.com/100/100/',
               'blurb' => 'Be afraid. Be VERY afraid.',
             },
           },
