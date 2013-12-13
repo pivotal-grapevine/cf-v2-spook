@@ -18,7 +18,7 @@ class Spook < Sinatra::Base
           'tags' => ['awesome', 'spook', 'spook for devs'],
           'metadata' => {
             'listing' => {
-              'imageUrl' => 'http://lorempixel.com/100/100/',
+              'imageUrl' => "http://#{request.host}/dog.jpg",
               'blurb' => 'Be afraid. Be VERY afraid.',
             },
           },
@@ -32,7 +32,6 @@ class Spook < Sinatra::Base
 
   put '/v2/service_instances/:service_instance_id' do
     json = JSON.parse(request.body.read)
-    raise 'unexpected plan_id' unless json['plan_id'] == 'scary-plan'
 
     Database.instance_count += 1
 
@@ -119,7 +118,16 @@ class Spook < Sinatra::Base
         {
           'id' => 'terrifying-plan',
           'name' => 'Terrifying',
-          'description' => 'This plan will make your accountant tremble in his/her boots.'
+          'description' => 'This plan will make your accountant tremble in his/her boots.',
+          'metadata' => {
+            'cost' => 0.0,
+            'bullets' =>
+              [
+                {'content' => 'More Spookiness'},
+                {'content' => '500mb of Fear'},
+                {'content' => 'Multi-boot tenancy'},
+              ]
+          }
         }
       ]
     end
