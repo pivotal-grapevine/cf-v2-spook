@@ -120,7 +120,7 @@ class Spook < Sinatra::Base
           'name' => 'Terrifying',
           'description' => 'This plan will make your accountant tremble in his/her boots.',
           'metadata' => {
-            'cost' => 0.0,
+            'cost' => 512.45,
             'bullets' =>
               [
                 {'content' => 'More Spookiness'},
