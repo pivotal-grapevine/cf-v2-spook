@@ -6,7 +6,6 @@ use Rack::Auth::Basic, 'Spook CF v2 Service' do |_, password|
 end
 
 class Spook < Sinatra::Base
-
   get '/v2/catalog' do
     body = {
       'services' => [
@@ -17,10 +16,7 @@ class Spook < Sinatra::Base
           'bindable' => true,
           'tags' => ['awesome', 'spook', 'spook for devs'],
           'metadata' => {
-            'listing' => {
-              'imageUrl' => "http://#{request.host}/dog.jpg",
-              'blurb' => 'Be afraid. Be VERY afraid.',
-            },
+            'imageUrl' => "http://#{request.host}/dog.jpg"
           },
           'plans' => Database.plans,
         }
@@ -106,13 +102,16 @@ class Spook < Sinatra::Base
           'name' => 'Scary',
           'description' => 'This plan will make you tremble in your boots.',
           'metadata' => {
-            'cost' => 0.0,
-            'bullets' =>
-              [
-                {'content' => 'Awesome'},
-                {'content' => 'Scary'},
-                {'content' => 'A Plan'},
-              ]
+            'costs' => {
+              'amount' => {
+                'usd' => 0.0
+              }
+            },
+            'bullets' => [
+              'Awesome',
+              'Scary',
+              'A Plan'
+            ]
           }
         },
         {
@@ -120,18 +119,19 @@ class Spook < Sinatra::Base
           'name' => 'Terrifying',
           'description' => 'This plan will make your accountant tremble in his/her boots.',
           'metadata' => {
-            'cost' => 512.45,
-            'bullets' =>
-              [
-                {'content' => 'More Spookiness'},
-                {'content' => '500mb of Fear'},
-                {'content' => 'Multi-boot tenancy'},
-              ]
+            'costs' => {
+              'amount' => {
+                'usd' => 512.45
+              }
+            },
+            'bullets' => [
+              'More Spookiness',
+              '500mb of Fear',
+              'Multi-boot tenancy'
+            ]
           }
         }
       ]
     end
-
   end
-
 end
